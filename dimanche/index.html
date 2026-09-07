@@ -60,13 +60,65 @@
   /* ---------- HERO ---------- */
   .hero{
     position:relative;
+    overflow:hidden;
     background:
-      radial-gradient(ellipse at 15% 8%, rgba(169,198,211,0.35), transparent 45%),
-      radial-gradient(ellipse at 90% 0%, rgba(193,92,60,0.16), transparent 40%),
-      linear-gradient(180deg, #F7F2E6 0%, #F0E9D8 55%, var(--forest-deep) 55%, var(--forest) 100%);
-    padding:14px 22px 34px;
+      radial-gradient(circle at 8% 100%, rgba(169,198,211,0.4), transparent 42%),
+      radial-gradient(circle at 100% 0%, rgba(193,92,60,0.14), transparent 38%),
+      repeating-linear-gradient(0deg, rgba(138,106,71,0.05) 0px, rgba(138,106,71,0.05) 1px, transparent 1px, transparent 26px),
+      repeating-linear-gradient(90deg, rgba(138,106,71,0.05) 0px, rgba(138,106,71,0.05) 1px, transparent 1px, transparent 26px),
+      linear-gradient(180deg, #F8F3E7 0%, #F1EADA 100%);
+    padding:38px 24px 64px;
     text-align:center;
-    border-bottom:1px solid rgba(51,44,34,0.06);
+  }
+
+  .hero-tape{
+    position:absolute;
+    top:18px;
+    left:-14px;
+    width:118px;
+    height:34px;
+    background:repeating-linear-gradient(45deg, #D9CBAE 0 8px, #E7DBC2 8px 16px);
+    box-shadow:0 3px 6px rgba(51,44,34,0.12);
+    transform:rotate(-9deg);
+    opacity:0.9;
+  }
+
+  .hero-stamp{
+    position:absolute;
+    top:22px;
+    right:20px;
+    width:64px;
+    height:64px;
+    background:var(--paper);
+    border:2px dashed rgba(138,106,71,0.45);
+    border-radius:6px;
+    transform:rotate(8deg);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 4px 10px rgba(51,44,34,0.1);
+  }
+  .hero-stamp .n{
+    font-family:'Noto Serif TC',serif;
+    font-weight:900;
+    font-size:1.15rem;
+    color:var(--rust);
+    line-height:1;
+  }
+  .hero-stamp .t{
+    font-size:0.5rem;
+    letter-spacing:0.03em;
+    color:var(--brown);
+    margin-top:3px;
+    line-height:1.2;
+    text-align:center;
+  }
+
+  .hero-inner{
+    position:relative;
+    z-index:2;
+    padding-top:20px;
   }
 
   .hero-mark{
@@ -76,11 +128,11 @@
     font-family:'Noto Serif TC',serif;
     font-size:0.82rem;
     color:var(--brown);
-    background:rgba(255,255,255,0.55);
+    background:rgba(255,255,255,0.6);
     border:1px solid rgba(138,106,71,0.25);
     padding:6px 16px;
     border-radius:999px;
-    margin-bottom:22px;
+    margin-bottom:20px;
   }
   .hero-mark span.dot{
     width:6px;height:6px;border-radius:50%;
@@ -89,19 +141,25 @@
   }
 
   .hero h1{
-    font-size:1.86rem;
+    font-size:1.8rem;
     font-weight:700;
-    line-height:1.5;
+    line-height:1.55;
     color:#3A2F20;
-    margin:0 auto 14px;
-    max-width:19ch;
+    margin:0 auto;
+    max-width:18ch;
+  }
+
+  .hero-rule{
+    width:56px;
+    height:10px;
+    margin:16px auto 20px;
   }
 
   .hero .sub{
     font-size:1rem;
     color:var(--ink-soft);
-    max-width:32ch;
-    margin:0 auto 26px;
+    max-width:30ch;
+    margin:0 auto 28px;
   }
 
   .hero .sub b{
@@ -139,19 +197,30 @@
   }
 
   .hero-foot{
-    margin-top:30px;
+    margin-top:28px;
     display:flex;
     justify-content:center;
-    gap:22px;
+    gap:12px;
     flex-wrap:wrap;
   }
   .hero-foot .chip{
     font-size:0.78rem;
-    color:#EFE7D6;
-    background:rgba(255,255,255,0.08);
-    border:1px solid rgba(255,255,255,0.22);
+    color:var(--brown);
+    background:rgba(255,255,255,0.65);
+    border:1px solid rgba(138,106,71,0.25);
     padding:7px 14px;
     border-radius:999px;
+  }
+
+  .hero-edge{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:-1px;
+    width:100%;
+    height:34px;
+    z-index:1;
+    display:block;
   }
 
   /* ---------- LOGO IMAGE SECTION ---------- */
@@ -417,20 +486,37 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-mark"><span class="dot"></span>Dimanche 迪夢奇．人才招募</div>
-    <h1>整理喜歡的文具，也整理喜歡的工作日常</h1>
-    <p class="sub">誠徵<b>行政助理</b>，協助品牌處理商品、訂單與資料整理，彈性排班，細心即可上手。</p>
-    <div class="cta-wrap">
-      <a class="cta-btn" href="https://lin.ee/xwZlR9L" target="_blank" rel="noopener">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 5.94 2 10.8c0 2.86 1.7 5.4 4.32 6.98-.14.66-.9 3.16-.94 3.36 0 0-.02.16.08.22.1.06.22.02.22.02.3-.04 3.48-2.28 4.02-2.66.76.12 1.54.18 2.3.18 5.52 0 10-3.94 10-8.8S17.52 2 12 2z" fill="currentColor"/></svg>
-        加入 LINE 應徵
-      </a>
+    <div class="hero-tape"></div>
+    <div class="hero-stamp">
+      <div class="n">15</div>
+      <div class="t">GOOD DAYS<br>AHEAD</div>
     </div>
-    <div class="hero-foot">
-      <span class="chip">彈性排班</span>
-      <span class="chip">完整教學</span>
-      <span class="chip">時薪 NT$240起</span>
+
+    <div class="hero-inner">
+      <div class="hero-mark"><span class="dot"></span>Dimanche 迪夢奇．人才招募</div>
+      <h1>整理喜歡的文具，也整理喜歡的工作日常</h1>
+
+      <svg class="hero-rule" viewBox="0 0 56 10" fill="none">
+        <path d="M2 6 Q 14 1 28 6 T 54 6" stroke="#C15C3C" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+
+      <p class="sub">誠徵<b>行政助理</b>，協助品牌處理商品、訂單與資料整理，彈性排班，細心即可上手。</p>
+      <div class="cta-wrap">
+        <a class="cta-btn" href="https://lin.ee/xwZlR9L" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 5.94 2 10.8c0 2.86 1.7 5.4 4.32 6.98-.14.66-.9 3.16-.94 3.36 0 0-.02.16.08.22.1.06.22.02.22.02.3-.04 3.48-2.28 4.02-2.66.76.12 1.54.18 2.3.18 5.52 0 10-3.94 10-8.8S17.52 2 12 2z" fill="currentColor"/></svg>
+          加入 LINE 應徵
+        </a>
+      </div>
+      <div class="hero-foot">
+        <span class="chip">彈性排班</span>
+        <span class="chip">完整教學</span>
+        <span class="chip">時薪 NT$240起</span>
+      </div>
     </div>
+
+    <svg class="hero-edge" viewBox="0 0 500 34" preserveAspectRatio="none">
+      <path d="M0,10 Q 20,0 40,9 T 80,8 T 120,11 T 160,6 T 200,10 T 240,7 T 280,11 T 320,6 T 360,10 T 400,8 T 440,11 T 480,6 L500,9 L500,34 L0,34 Z" fill="#3F5233"/>
+    </svg>
   </section>
 
   <!-- BRAND VISUAL / FIRST LOGO IMAGE -->
